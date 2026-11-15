@@ -1,12 +1,311 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>farmacia</title>
+    <title>Farmacia El Descuento Jossy | Salud y Ahorro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+    <!-- Barra de Navegación Minimalista -->
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <div class="logo-badge-box">
+                    <span class="logo-cross">+</span>
+                </div>
+                <div class="logo-texts">
+                    <span class="logo-title">FARMACIA</span>
+                    <span class="logo-subtitle">El Descuento Jossy</span>
+                </div>
+            </a>
+            
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#promociones">Promociones</a>
+                <a href="#catalogo">Productos</a>
+                <a href="#local">Nuestro Local</a>
+                <a href="https://wa.me/593981689854?text=Hola,%20quisiera%20consultar%20sobre%20un%20producto" target="_blank" rel="noopener noreferrer" class="btn-nav">Pedir por WhatsApp</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección Hero (Portada Moderna con la Ruta Corregida a /images/) -->
+    <section id="inicio" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge-pill">💙 Tu salud y tu bolsillo en buenas manos</span>
+                <h1>Los mejores precios y descuentos reales para toda la familia</h1>
+                <p>Encuentra medicamentos originales, dermocosmética, vitaminas y promociones exclusivas renovadas cada semana y cada mes en Farmacia El Descuento Jossy.</p>
+                <div class="hero-actions">
+                    <a href="#promociones" class="btn btn-primary">Ver Ofertas de la Semana</a>
+                    <a href="#catalogo" class="btn btn-outline">Explorar Catálogo</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <strong>100%</strong>
+                        <span>Originales</span>
+                    </div>
+                    <div class="stat">
+                        <strong>Ahorro</strong>
+                        <span>Descuentos Reales</span>
+                    </div>
+                    <div class="stat">
+                        <strong>Directo</strong>
+                        <span>Atención WhatsApp</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta Visual con tu Foto Real dentro de la carpeta images/ -->
+            <div class="hero-visual">
+                <div class="store-showcase-card">
+                    <div class="store-image-container">
+                        <img src="images/farmacia.png" alt="Farmacia El Descuento Jossy" class="store-real-photo">
+                        <div class="store-badge-floating">📍 Local Abierto Hoy</div>
+                    </div>
+                    <div class="store-card-info">
+                        <h3>Farmacia El Descuento Jossy</h3>
+                        <p>Instalaciones limpias, seguras y con cadena de frío garantizada para tus medicamentos.</p>
+                        <a href="https://wa.me/593981689854?text=Hola,%20quiero%20saber%20ubicacion%20o%20consultar%20stock" target="_blank" rel="noopener noreferrer" class="store-link">Escríbenos al instante →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Informativo Minimalista -->
+    <div class="promo-ticker">
+        <div class="container ticker-content">
+            <span>🔥 <strong>PROMO SEMANAL:</strong> 2x1 en Vitaminas C y Zinc</span>
+            <span class="dot">•</span>
+            <span>📅 <strong>PROMO MENSUAL:</strong> 20% de descuento en cuidado infantil</span>
+            <span class="dot">•</span>
+            <span>🚚 <strong>CONSULTAS:</strong> Escríbenos directo al WhatsApp</span>
+        </div>
+    </div>
+
+    <!-- Sección de Promociones -->
+    <section id="promociones" class="section promos-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Ahorra en tu bienestar</span>
+                <h2>Promociones Activas</h2>
+                <p>Actualizamos nuestras ofertas cada semana y cada mes para cuidar tu economía sin descuidar tu salud.</p>
+            </div>
+
+            <div class="promos-grid">
+                <!-- Promo Semanal 1 -->
+                <article class="promo-card weekly">
+                    <div class="promo-ribbon">OFERTA SEMANAL</div>
+                    <div class="promo-discount">-25%</div>
+                    <h3>Combo Inmunidad Total</h3>
+                    <p>Vitamina C 1000mg + Vitamina D3 + Zinc. Refuerza tus defensas durante toda la semana.</p>
+                    <div class="price-box">
+                        <span class="old-price">$24.00</span>
+                        <span class="new-price">$18.00</span>
+                    </div>
+                    <a href="https://wa.me/593981689854?text=Hola,%20me%20interesa%20la%20promo%20semanal:%20Combo%20Inmunidad%20Total" target="_blank" rel="noopener noreferrer" class="btn btn-card">Consultar Disponibilidad</a>
+                </article>
+
+                <!-- Promo Mensual Destacada -->
+                <article class="promo-card monthly featured">
+                    <div class="promo-ribbon gold">PROMOCIÓN DEL MES</div>
+                    <div class="promo-discount">-30%</div>
+                    <h3>Línea Dermocosmética y Protección Solar</h3>
+                    <p>Protector solar toque seco FPS 50+ y limpiador facial hidratante para todo tipo de piel.</p>
+                    <div class="price-box">
+                        <span class="old-price">$45.00</span>
+                        <span class="new-price">$31.50</span>
+                    </div>
+                    <a href="https://wa.me/593981689854?text=Hola,%20me%20interesa%20la%20promo%20del%20mes:%20Linea%20Dermocosmetica" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Aprovechar Oferta</a>
+                </article>
+
+                <!-- Promo Semanal 2 -->
+                <article class="promo-card weekly">
+                    <div class="promo-ribbon">OFERTA SEMANAL</div>
+                    <div class="promo-discount">2x1</div>
+                    <h3>Analgésicos y Antigripales</h3>
+                    <p>Alivio rápido para síntomas de resfriado común, dolor de cabeza y malestar general.</p>
+                    <div class="price-box">
+                        <span class="old-price">$12.00</span>
+                        <span class="new-price">$6.00</span>
+                    </div>
+                    <a href="https://wa.me/593981689854?text=Hola,%20me%20interesa%20la%20promo%202x1%20en%20Antigripales" target="_blank" rel="noopener noreferrer" class="btn btn-card">Consultar Disponibilidad</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo de Productos -->
+    <section id="catalogo" class="section catalog-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle">Información y Categorías</span>
+                <h2>Nuestros Productos</h2>
+                <p>Amplio stock en medicamentos genéricos, de marca y productos de cuidado personal.</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-badge">Medicamentos</div>
+                    <div class="product-icon">🩺</div>
+                    <h3>Medicamentos de Receta y Venta Libre</h3>
+                    <p>Tratamientos agudos y crónicos con garantía de laboratorio y cadena de frío certificada.</p>
+                    <ul class="product-features">
+                        <li>Analgésicos y antiinflamatorios</li>
+                        <li>Control de presión y diabetes</li>
+                        <li>Antibióticos (bajo receta médica)</li>
+                    </ul>
+                    <a href="https://wa.me/593981689854?text=Hola,%20quisiera%20cotizar%20un%20medicamento" target="_blank" rel="noopener noreferrer" class="link-arrow">Cotizar receta →</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Bienestar</div>
+                    <div class="product-icon">🍊</div>
+                    <h3>Vitaminas y Suplementos</h3>
+                    <p>Nutrición especializada para deportistas, adultos mayores, niños y energía diaria.</p>
+                    <ul class="product-features">
+                        <li>Multivitamínicos completos</li>
+                        <li>Colágeno hidrolizado y magnesio</li>
+                        <li>Omega 3 y probióticos</li>
+                    </ul>
+                    <a href="https://wa.me/593981689854?text=Hola,%20busco%20informacion%20sobre%20vitaminas" target="_blank" rel="noopener noreferrer" class="link-arrow">Ver opciones →</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Cuidado Personal</div>
+                    <div class="product-icon">🧴</div>
+                    <h3>Dermocosmética e Higiene</h3>
+                    <p>Cuidado clínico para la piel, cabello e higiene diaria recomendado por especialistas.</p>
+                    <ul class="product-features">
+                        <li>Protectores solares dermatológicos</li>
+                        <li>Cremas hidratantes y antiedad</li>
+                        <li>Higiene bucal y corporal</li>
+                    </ul>
+                    <a href="https://wa.me/593981689854?text=Hola,%20quisiera%20consultar%20productos%20de%20cuidado%20personal" target="_blank" rel="noopener noreferrer" class="link-arrow">Consultar stock →</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-badge">Maternidad</div>
+                    <div class="product-icon">🍼</div>
+                    <h3>Cuidado Infantil y Bebés</h3>
+                    <p>Todo lo necesario para el crecimiento sano y la protección de los más pequeños.</p>
+                    <ul class="product-features">
+                        <li>Fórmulas infantiles y papillas</li>
+                        <li>Pañales y toallitas hipoalergénicas</li>
+                        <li>Cremas para rozaduras y baños</li>
+                    </ul>
+                    <a href="https://wa.me/593981689854?text=Hola,%20busco%20productos%20para%20bebe" target="_blank" rel="noopener noreferrer" class="link-arrow">Consultar precios →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Especial: Nuestro Local -->
+    <section id="local" class="section local-section">
+        <div class="container">
+            <div class="local-banner-box">
+                <div class="local-text-side">
+                    <span class="subtitle">Visítanos o contáctanos</span>
+                    <h2>Tu farmacia de confianza, siempre cerca</h2>
+                    <p>Contamos con un espacio limpio, ordenado y con un equipo capacitado para orientarte en lo que necesites para tu salud diaria.</p>
+                    <div class="local-features-list">
+                        <span>✨ Atención personalizada</span>
+                        <span>✨ Precios bajos garantizados</span>
+                        <span>✨ Entrega rápida y directa</span>
+                    </div>
+                </div>
+                <div class="local-visual-side">
+                    <div class="local-photo-mockup-real">
+                        <img src="images/farmacia.png" alt="Local Farmacia El Descuento Jossy" class="local-real-img-box">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Confianza / WhatsApp CTA -->
+    <section class="section trust-section">
+        <div class="container">
+            <div class="trust-box">
+                <div class="trust-info">
+                    <h2>¿Buscas algún medicamento en específico?</h2>
+                    <p>Escríbenos directamente a nuestro WhatsApp. Te confirmamos disponibilidad, precios y promociones vigentes al instante.</p>
+                </div>
+                <div class="trust-cta">
+                    <a href="https://wa.me/593981689854?text=Hola,%20necesito%20ayuda%20para%20encontrar%20un%20producto" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-large">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                        Chatear por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página con Frase Motivacional -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo footer-logo">
+                    <div class="logo-badge-box light">
+                        <span class="logo-cross">+</span>
+                    </div>
+                    <div class="logo-texts">
+                        <span class="logo-title white">FARMACIA</span>
+                        <span class="logo-subtitle">El Descuento Jossy</span>
+                    </div>
+                </a>
+                <p>Comprometidos con tu bienestar integral, ofreciendo productos farmacéuticos confiables y el mayor ahorro para tu hogar.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <a href="#inicio">Inicio</a>
+                <a href="#promociones">Promociones Semanales y Mensuales</a>
+                <a href="#catalogo">Catálogo de Productos</a>
+                <a href="#local">Nuestro Local</a>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Atención Directa</h4>
+                <p>📱 WhatsApp: +593 98 168 9854</p>
+                <p>🕒 Lunes a Domingo: 08:00 - 22:00</p>
+                <p>📍 Ecuador</p>
+            </div>
+        </div>
+
+        <div class="motivational-bar">
+            <div class="container">
+                <p class="motivational-quote">✨ "La salud es la mayor riqueza; cuidar de ti hoy es construir el futuro lleno de energía y bienestar que mereces." ✨</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 Farmacia El Descuento Jossy. Todos los derechos reservados. Consulta siempre a tu médico antes de automedicarte.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/593981689854?text=Hola,%20visite%20su%20pagina%20web%20y%20quisiera%20mas%20informacion" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" width="32" height="32" fill="currentColor">
+            <path d="M16.004 3.2c-7.06 0-12.8 5.74-12.8 12.8 0 2.257.589 4.46 1.709 6.403L3.1 29.02l6.787-1.78a12.74 12.74 0 0 0 6.117 1.56h.005c7.059 0 12.799-5.74 12.799-12.8 0-3.42-1.332-6.636-3.75-9.054A12.716 12.716 0 0 0 16.004 3.2zm0 23.44h-.004a10.61 10.61 0 0 1-5.41-1.482l-.388-.23-4.027 1.056 1.075-3.926-.253-.402a10.605 10.605 0 0 1-1.627-5.656c0-5.865 4.772-10.637 10.638-10.637 2.842 0 5.513 1.107 7.522 3.117a10.568 10.568 0 0 1 3.112 7.524c0 5.865-4.773 10.636-10.638 10.636zm5.835-7.967c-.32-.16-1.892-.934-2.185-1.04-.293-.107-.506-.16-.72.16-.213.32-.826 1.04-1.013 1.253-.186.214-.373.24-.693.08-.32-.16-1.35-.498-2.572-1.588-.951-.848-1.593-1.896-1.78-2.216-.186-.32-.02-.493.14-.652.144-.143.32-.373.48-.56.16-.186.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.72-1.734-.986-2.374-.26-.624-.524-.54-.72-.55l-.613-.01c-.213 0-.56.08-.853.4-.293.32-1.12 1.094-1.12 2.668s1.146 3.094 1.306 3.308c.16.213 2.256 3.445 5.465 4.831.763.33 1.359.527 1.823.674.766.244 1.464.21 2.015.127.615-.092 1.892-.773 2.159-1.52.266-.747.266-1.387.186-1.52-.08-.134-.293-.214-.613-.374z"/>
+        </svg>
+        <span class="tooltip-ws">¡Escríbenos!</span>
+    </a>
+
 </body>
 </html>
