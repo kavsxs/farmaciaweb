@@ -1,5 +1,5 @@
 /* =========================================
-   VARIABLES Y RESET GENERAL (Azul Claro Institucional y Blanco)
+   VARIABLES Y RESET GENERAL (Azul Claro y Blanco)
    ========================================= */
 :root {
     --primary: #0284c7;         /* Azul Claro Principal */
@@ -13,12 +13,13 @@
     --text-dark: #0f172a;
     --text-muted: #475569;
     --border-color: #bae6fd;
-    --shadow-sm: 0 4px 6px -1px rgba(2, 132, 199, 0.05);
-    --shadow-md: 0 10px 25px -5px rgba(2, 132, 199, 0.08);
-    --shadow-lg: 0 20px 40px -10px rgba(2, 132, 199, 0.15);
-    --radius-md: 14px;
-    --radius-lg: 24px;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --shadow-sm: 0 4px 12px rgba(2, 132, 199, 0.08);
+    --shadow-md: 0 12px 30px -6px rgba(2, 132, 199, 0.12);
+    --shadow-lg: 0 25px 50px -12px rgba(2, 132, 199, 0.22);
+    --shadow-glow: 0 0 35px rgba(14, 165, 233, 0.25);
+    --radius-md: 16px;
+    --radius-lg: 26px;
+    --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -55,20 +56,21 @@ ul {
 }
 
 .section {
-    padding: 90px 0;
+    padding: 95px 0;
 }
 
 /* =========================================
-   NAVEGACIÓN & LOGO NUEVO
+   NAVEGACIÓN CON GLASSMORPHISM
    ========================================= */
 .navbar {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(186, 230, 253, 0.6);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(186, 230, 253, 0.5);
+    box-shadow: var(--shadow-sm);
 }
 
 .nav-content {
@@ -94,7 +96,12 @@ ul {
     color: white;
     border-radius: 12px;
     transform: skew(-4deg);
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+    transition: var(--transition);
+}
+
+.logo:hover .logo-badge-box {
+    transform: skew(-4deg) rotate(6deg) scale(1.05);
 }
 
 .logo-badge-box.light {
@@ -146,10 +153,27 @@ ul {
     font-size: 0.95rem;
     color: var(--text-muted);
     transition: var(--transition);
+    position: relative;
 }
 
-.nav-links a:hover {
+.nav-links a:not(.btn-nav):hover {
     color: var(--primary);
+}
+
+.nav-links a:not(.btn-nav)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.nav-links a:not(.btn-nav):hover::after {
+    width: 100%;
 }
 
 .btn-nav {
@@ -158,15 +182,17 @@ ul {
     padding: 10px 22px;
     border-radius: 50px;
     font-weight: 700 !important;
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.25);
+    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.3);
+    transition: var(--transition);
 }
 
 .btn-nav:hover {
     background: var(--primary-dark);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(2, 132, 199, 0.45);
 }
 
-/* Menú Hamburguesa CSS Puro */
+/* Menú Hamburguesa */
 .menu-toggle {
     display: none;
 }
@@ -187,12 +213,31 @@ ul {
 }
 
 /* =========================================
-   HERO SECTION & FOTO REAL DE LA FARMACIA
+   HERO SECTION CON EFECTO DE LUCES (GLOW)
    ========================================= */
 .hero {
-    padding: 70px 0 90px;
-    background: radial-gradient(circle at top right, #e0f2fe 0%, #f0f9ff 45%, #f8fafc 100%);
+    padding: 80px 0 100px;
+    background: radial-gradient(circle at top right, #e0f2fe 0%, #f0f9ff 50%, #f8fafc 100%);
     position: relative;
+    overflow: hidden;
+}
+
+/* Círculos de luz ambiental flotantes de fondo */
+.hero-glow-bg {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(224, 242, 254, 0) 70%);
+    z-index: 0;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-grid {
@@ -204,17 +249,19 @@ ul {
 
 .badge-pill {
     display: inline-block;
-    background: var(--primary-light);
+    background: white;
     color: var(--primary-dark);
     font-weight: 700;
     font-size: 0.85rem;
-    padding: 8px 16px;
+    padding: 8px 18px;
     border-radius: 50px;
     margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
 }
 
 .hero-text h1 {
-    font-size: clamp(2.2rem, 4.2vw, 3.4rem);
+    font-size: clamp(2.3rem, 4.2vw, 3.5rem);
     font-weight: 800;
     line-height: 1.15;
     color: var(--text-dark);
@@ -223,7 +270,7 @@ ul {
 }
 
 .hero-text p {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     color: var(--text-muted);
     margin-bottom: 32px;
     max-width: 540px;
@@ -252,24 +299,26 @@ ul {
 .btn-primary {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
-    box-shadow: 0 10px 20px -5px rgba(2, 132, 199, 0.4);
+    box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.45);
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px -5px rgba(2, 132, 199, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px -6px rgba(2, 132, 199, 0.6);
 }
 
 .btn-outline {
     background: white;
     color: var(--text-dark);
     border: 2px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-outline:hover {
     border-color: var(--primary);
     color: var(--primary);
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
 }
 
 .hero-stats {
@@ -281,7 +330,7 @@ ul {
 
 .stat strong {
     display: block;
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 800;
     color: var(--primary);
 }
@@ -292,23 +341,24 @@ ul {
     font-weight: 500;
 }
 
-/* Tarjeta Showcase con la Foto Real */
+/* Tarjeta Showcase con Sombra Brillante */
 .store-showcase-card {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(16px);
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 1);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
     transition: var(--transition);
 }
 
 .store-showcase-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 30px 60px -15px rgba(2, 132, 199, 0.3), var(--shadow-glow);
 }
 
 .store-image-container {
-    height: 240px;
+    height: 250px;
     position: relative;
     background: #0f172a;
     overflow: hidden;
@@ -318,41 +368,42 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .store-showcase-card:hover .store-real-photo {
-    transform: scale(1.04);
+    transform: scale(1.06);
 }
 
 .store-badge-floating {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     color: var(--primary-dark);
     font-size: 0.75rem;
     font-weight: 800;
-    padding: 6px 12px;
+    padding: 7px 14px;
     border-radius: 50px;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     z-index: 2;
+    backdrop-filter: blur(8px);
 }
 
 .store-card-info {
-    padding: 25px;
+    padding: 28px;
 }
 
 .store-card-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 800;
     margin-bottom: 8px;
 }
 
 .store-card-info p {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: var(--text-muted);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .store-link {
@@ -360,21 +411,23 @@ ul {
     font-size: 0.9rem;
     color: var(--primary);
     transition: var(--transition);
+    display: inline-block;
 }
 
 .store-link:hover {
     color: var(--primary-dark);
-    letter-spacing: 0.2px;
+    transform: translateX(4px);
 }
 
 /* =========================================
    TICKER DE PROMOCIONES
    ========================================= */
 .promo-ticker {
-    background: var(--text-dark);
+    background: linear-gradient(90deg, #0284c7, #0369a1, #0f172a);
     color: white;
-    padding: 14px 0;
-    font-size: 0.9rem;
+    padding: 15px 0;
+    font-size: 0.92rem;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .ticker-content {
@@ -382,16 +435,19 @@ ul {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 20px;
     text-align: center;
 }
 
 .ticker-content strong {
-    color: #38bdf8;
+    color: #fef08a;
+    background: rgba(0,0,0,0.2);
+    padding: 2px 8px;
+    border-radius: 6px;
 }
 
 .dot {
-    color: var(--primary);
+    color: #38bdf8;
 }
 
 /* =========================================
@@ -400,7 +456,7 @@ ul {
 .section-header {
     text-align: center;
     max-width: 650px;
-    margin: 0 auto 55px;
+    margin: 0 auto 60px;
 }
 
 .subtitle {
@@ -409,36 +465,40 @@ ul {
     font-weight: 700;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    background: var(--primary-light);
+    padding: 5px 14px;
+    border-radius: 50px;
 }
 
 .section-header h2 {
-    font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+    font-size: clamp(2rem, 3.5vw, 2.7rem);
     font-weight: 800;
     margin-bottom: 14px;
     letter-spacing: -0.02em;
+    color: var(--text-dark);
 }
 
 .section-header p {
     color: var(--text-muted);
-    font-size: 1.05rem;
+    font-size: 1.08rem;
 }
 
 /* =========================================
-   TARJETAS DE PROMOCIONES
+   TARJETAS DE PROMOCIONES (EFECTO ELEVADO)
    ========================================= */
 .promos-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 32px;
     align-items: stretch;
 }
 
 .promo-card {
     background: var(--bg-white);
     border-radius: var(--radius-lg);
-    padding: 36px 28px;
+    padding: 38px 30px;
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-md);
     display: flex;
@@ -448,14 +508,15 @@ ul {
 }
 
 .promo-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
     border-color: var(--primary);
 }
 
 .promo-card.featured {
     background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
     border: 2px solid var(--primary);
+    box-shadow: var(--shadow-lg);
 }
 
 .promo-ribbon {
@@ -472,20 +533,22 @@ ul {
 }
 
 .promo-ribbon.gold {
-    background: #fef3c7;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
     color: #b45309;
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2);
 }
 
 .promo-discount {
-    font-size: 2.6rem;
+    font-size: 2.8rem;
     font-weight: 800;
     color: var(--primary);
     line-height: 1;
     margin-bottom: 14px;
+    text-shadow: 0 2px 10px rgba(2, 132, 199, 0.15);
 }
 
 .promo-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     font-weight: 700;
     margin-bottom: 12px;
 }
@@ -500,7 +563,7 @@ ul {
 .price-box {
     display: flex;
     align-items: baseline;
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 22px;
     padding-top: 16px;
     border-top: 1px dashed var(--border-color);
@@ -509,12 +572,12 @@ ul {
 .old-price {
     text-decoration: line-through;
     color: #94a3b8;
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: 600;
 }
 
 .new-price {
-    font-size: 1.65rem;
+    font-size: 1.75rem;
     font-weight: 800;
     color: var(--text-dark);
 }
@@ -529,6 +592,7 @@ ul {
 .btn-card:hover {
     background: var(--primary);
     color: white;
+    border-color: var(--primary);
 }
 
 /* =========================================
@@ -536,27 +600,30 @@ ul {
    ========================================= */
 .catalog-section {
     background: var(--bg-white);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 26px;
+    grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+    gap: 28px;
 }
 
 .product-card {
     background: var(--bg-main);
     border-radius: var(--radius-md);
-    padding: 30px 24px;
+    padding: 32px 26px;
     border: 1px solid var(--border-color);
     transition: var(--transition);
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow-sm);
 }
 
 .product-card:hover {
     background: white;
-    transform: translateY(-6px);
+    transform: translateY(-8px);
     box-shadow: var(--shadow-md);
     border-color: var(--primary);
 }
@@ -567,18 +634,23 @@ ul {
     font-weight: 700;
     color: var(--primary-dark);
     background: var(--primary-light);
-    padding: 4px 12px;
+    padding: 5px 14px;
     border-radius: 50px;
     margin-bottom: 16px;
 }
 
 .product-icon {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
     margin-bottom: 14px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-icon {
+    transform: scale(1.1) rotate(5deg);
 }
 
 .product-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.22rem;
     font-weight: 700;
     margin-bottom: 10px;
 }
@@ -615,15 +687,16 @@ ul {
     font-size: 0.92rem;
     color: var(--primary);
     transition: var(--transition);
+    display: inline-block;
 }
 
 .link-arrow:hover {
     color: var(--primary-dark);
-    letter-spacing: 0.3px;
+    transform: translateX(4px);
 }
 
 /* =========================================
-   SECCIÓN NUESTRO LOCAL (CON TU FOTO)
+   SECCIÓN NUESTRO LOCAL
    ========================================= */
 .local-section {
     background: #f0f9ff;
@@ -635,16 +708,16 @@ ul {
     border: 1px solid var(--border-color);
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
-    padding: 50px;
+    gap: 45px;
+    padding: 55px;
     align-items: center;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
 }
 
 .local-text-side h2 {
-    font-size: clamp(1.8rem, 3vw, 2.3rem);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     font-weight: 800;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .local-text-side p {
@@ -656,16 +729,16 @@ ul {
 .local-features-list {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     font-weight: 700;
     color: var(--primary-dark);
-    font-size: 0.95rem;
+    font-size: 0.98rem;
 }
 
 .local-photo-mockup-real {
     border-radius: var(--radius-md);
     overflow: hidden;
-    height: 280px;
+    height: 300px;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
 }
@@ -674,51 +747,71 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.local-banner-box:hover .local-real-img-box {
+    transform: scale(1.04);
 }
 
 /* =========================================
    BANNER LLAMADO A LA ACCIÓN WHATSAPP
    ========================================= */
+.trust-section {
+    padding-bottom: 0;
+}
+
 .trust-box {
     background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
     border-radius: var(--radius-lg);
-    padding: 50px 45px;
+    padding: 55px 50px;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 30px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(3, 105, 161, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
 .trust-info {
     max-width: 580px;
+    position: relative;
+    z-index: 1;
 }
 
 .trust-info h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
     font-weight: 800;
     margin-bottom: 12px;
 }
 
 .trust-info p {
     color: #cbd5e1;
-    font-size: 1.05rem;
+    font-size: 1.08rem;
+}
+
+.trust-cta {
+    position: relative;
+    z-index: 1;
 }
 
 .btn-whatsapp-large {
     background: var(--whatsapp);
     color: #064e3b;
     font-weight: 800;
-    padding: 16px 30px;
+    padding: 18px 34px;
     border-radius: 50px;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.4);
+    transition: var(--transition);
 }
 
 .btn-whatsapp-large:hover {
     background: #34eb77;
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(37, 211, 102, 0.6);
 }
 
 /* =========================================
@@ -727,14 +820,15 @@ ul {
 .footer {
     background: #0f172a;
     color: #cbd5e1;
-    padding-top: 70px;
+    padding-top: 80px;
+    margin-top: -30px; /* Se fusiona estéticamente con el CTA superior */
 }
 
 .footer-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 50px;
+    gap: 45px;
+    padding-bottom: 60px;
 }
 
 .footer-brand p {
@@ -746,8 +840,9 @@ ul {
 
 .footer h4 {
     color: white;
-    font-size: 1.1rem;
-    margin-bottom: 18px;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    font-weight: 700;
 }
 
 .footer-links {
@@ -764,25 +859,26 @@ ul {
 
 .footer-links a:hover {
     color: #38bdf8;
+    transform: translateX(4px);
 }
 
 .footer-contact p {
     font-size: 0.95rem;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: #94a3b8;
 }
 
-/* Frase Motivacional Destacada */
+/* Frase Motivacional */
 .motivational-bar {
-    background: linear-gradient(90deg, rgba(2, 132, 199, 0.2), rgba(56, 189, 248, 0.2));
+    background: linear-gradient(90deg, rgba(2, 132, 199, 0.15), rgba(56, 189, 248, 0.25), rgba(2, 132, 199, 0.15));
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 24px 0;
+    padding: 26px 0;
     text-align: center;
 }
 
 .motivational-quote {
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     font-weight: 600;
     font-style: italic;
     color: #f0f9ff;
@@ -790,41 +886,41 @@ ul {
 }
 
 .footer-bottom {
-    padding: 24px 0;
+    padding: 26px 0;
     text-align: center;
     font-size: 0.85rem;
     color: #64748b;
 }
 
 /* =========================================
-   BOTÓN FLOTANTE DE WHATSAPP
+   BOTÓN FLOTANTE DE WHATSAPP CON PULSO
    ========================================= */
 .whatsapp-float {
     position: fixed;
-    bottom: 28px;
-    right: 28px;
+    bottom: 30px;
+    right: 30px;
     background-color: var(--whatsapp);
     color: white;
-    width: 62px;
-    height: 62px;
+    width: 66px;
+    height: 66px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
     z-index: 9999;
     transition: var(--transition);
-    animation: pulseWs 2.5s infinite;
+    animation: pulseWs 2.8s infinite;
 }
 
 .whatsapp-float:hover {
     background-color: var(--whatsapp-dark);
-    transform: scale(1.1);
+    transform: scale(1.12);
 }
 
 .tooltip-ws {
     position: absolute;
-    right: 74px;
+    right: 78px;
     background: var(--text-dark);
     color: white;
     font-size: 0.82rem;
@@ -840,12 +936,12 @@ ul {
 
 .whatsapp-float:hover .tooltip-ws {
     opacity: 1;
-    right: 78px;
+    right: 82px;
 }
 
 @keyframes pulseWs {
     0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
-    70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+    70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
     100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
@@ -892,12 +988,13 @@ ul {
         top: 85px;
         left: 0;
         width: 100%;
-        background: white;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(16px);
         flex-direction: column;
-        padding: 25px 0;
+        padding: 28px 0;
         gap: 20px;
         border-bottom: 1px solid var(--border-color);
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-lg);
         display: none;
     }
 
@@ -906,7 +1003,7 @@ ul {
     }
 
     .trust-box {
-        padding: 35px 25px;
+        padding: 40px 25px;
         text-align: center;
         justify-content: center;
     }
